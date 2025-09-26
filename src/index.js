@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+impo
 import connectDB from "./db/index.js";
 import dotenv from "dotenv";
 
@@ -9,7 +10,22 @@ dotenv.config({
 )
 
 
-connectDB();
+connectDB()
+.then(()=>{
+    app.listen(process.env.PORT,()=>{
+        console.log(`Server is runing on pot ${process.env.PORT}`);
+    })
+})
+.catch((error)=>{
+    console.log("Error in DB Connection " ,error);
+    
+})
+
+
+
+
+
+
 
 // const app = express();
 
