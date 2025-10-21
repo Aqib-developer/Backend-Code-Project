@@ -52,7 +52,7 @@ const userSchema = new Schema({
 
 userSchema.pre("Save", async function (next) {
     if(!this.isModified("password")) return next() // if password is not modified we dont want to hash it again
-    this.passwaord = bcrypt.hash(this.password , 10)
+    this.passwaord = await bcrypt.hash(this.password , 10)
     next()
 })
 userSchema.methods.isPasswordCorrect = async function (password) {
